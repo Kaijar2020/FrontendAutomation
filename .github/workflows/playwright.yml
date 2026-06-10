@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Tests & Validation
 on:
   push:
     branches: [ main, master ]
@@ -25,3 +25,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+  load-test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Validate load test script (dry-run)
+      run: docker run --rm -v "${{ github.workspace }}:/scripts" grafana/k6 run --dry-run "/scripts/Load Test/loadTest.js"

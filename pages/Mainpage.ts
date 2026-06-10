@@ -26,7 +26,11 @@ export class MainPage{
         await this.searchButton.click();
     }
     async getNoResultsFoundMessage(){
-        return await this.noResultsFoundMessage.textContent();
+        try {
+            return await this.noResultsFoundMessage.textContent({ timeout: 5000 });
+        } catch {
+            return null;
+        }
     }
     async getDocumentList(){
         return await this.documentList.allTextContents();
