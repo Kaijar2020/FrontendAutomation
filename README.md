@@ -49,6 +49,14 @@ npx playwright test --headed # visible browser
 
 Import `API test with Postman/AcmeAI.postman_collection.json` into Postman and run against `http://localhost:8000`.
 
+To generate an HTML report locally:
+```bash
+npm install -g newman-reporter-htmlextra
+newman run "API test with Postman/AcmeAI.postman_collection.json" -r htmlextra --reporter-htmlextra-export "newman-report/report.html"
+```
+
+![Newman Report Preview](newman-report/report-preview.png)
+
 ### Load Test (K6)
 
 ```bash
