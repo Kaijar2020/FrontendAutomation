@@ -55,7 +55,7 @@ npm install -g newman-reporter-htmlextra
 newman run "API test with Postman/AcmeAI.postman_collection.json" -r htmlextra --reporter-htmlextra-export "newman-report/report.html"
 ```
 
-![Newman Report Preview](newman-report/report-preview.png)
+![Newman Report Preview](report-preview.png)
 
 ### Load Test (K6)
 
