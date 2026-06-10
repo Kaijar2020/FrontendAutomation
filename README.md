@@ -16,14 +16,16 @@ UI, API, and load testing suite for the AcmeAI legal document search application
 ```
 FrontendAutomation/
 ├── pages/
-│   └── Mainpage.ts                # Page Object Model
+│   └── Mainpage.ts                       # Page Object Model
 ├── tests/
-│   └── mainPageTest.spec.ts       # UI test suite (9 tests)
-├── AcmeAI.postman_collection.json # API tests (7 requests)
-├── loadTest.js                    # K6 load test script
-├── playwright.config.ts           # Playwright configuration
+│   └── mainPageTest.spec.ts              # UI test suite (10 tests)
+├── API test with Postman/
+│   └── AcmeAI.postman_collection.json    # API tests (7 requests)
+├── Load Test/
+│   └── loadTest.js                       # K6 load test script
+├── playwright.config.ts                  # Playwright configuration
 ├── package.json
-└── .github/workflows/playwright.yml
+└── .github/workflows/playwright.yml      # CI pipeline
 ```
 
 ## Setup
@@ -45,21 +47,21 @@ npx playwright test --headed # visible browser
 
 ### API Tests (Postman)
 
-Import `AcmeAI.postman_collection.json` into Postman and run against `http://localhost:8000`.
+Import `API test with Postman/AcmeAI.postman_collection.json` into Postman and run against `http://localhost:8000`.
 
 ### Load Test (K6)
 
 ```bash
-k6 run loadTest.js
+k6 run "Load Test/loadTest.js"
 ```
 
 ### CI
 
-GitHub Actions runs UI tests automatically on push/PR to `main`/`master` and uploads the HTML report as an artifact.
+GitHub Actions runs UI tests (with HTML report artifact) and validates the K6 load script via `--dry-run` on push/PR to `main`/`master`.
 
 ## Test Coverage
 
-### UI Tests — 9 test cases
+### UI Tests — 10 test cases
 
 | Scenario | Input | Assertion |
 |---|---|---|
